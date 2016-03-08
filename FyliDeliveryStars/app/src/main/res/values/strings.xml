@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">FyliDeliveryStars</string>
+    <string name="app_name_spaced">Fyli Delivery Stars</string>
+    <string name="title_activity_main_menu">Κύριο Μενού</string>
+
+    <string name="action_settings">Ρυθμίσεις</string>
+
+    <string name="welcome_toast">
+        Καλωσορίσατε!
+    </string>
+
+    <string name="main_menu_tip">
+        Παρακαλώ επιλέξτε είδος καταστήματος:
+    </string>
+
+    <string name="store_pick_tip">
+        Παρακαλώ επιλέξτε
+    </string>
+
+    <string name="souvlaki_data_path">
+        SouvlakiData.csv
+    </string>
+
+    <string name="coffee_data_path">
+        CoffeeData.csv
+    </string>
+
+    <string name="pancake_data_path">
+        PancakeData.csv
+    </string>
+
+    <string name="pizza_data_path">
+        PizzaData.csv
+    </string>
+    
+    <string name="burger_data_path">
+        BurgerDataPath.csv
+    </string>
+    <string name="title_activity_delivery_or_take_away">DeliveryOrTakeAway</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_shop_lister">ShopLister</string>
+    <string name="title_activity_shop_profile">ShopProfile</string>
+
+</resources>
