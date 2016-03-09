@@ -42,8 +42,8 @@ public class ShopProfile extends Activity {
         showLocButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //openMaps(shop.getGPSCoordinates());
-            }
+                openMaps(shop.getGPSCoordinates());
+                 }
         });
 
         Button phone1 = (Button) findViewById(R.id.telephone1Button);
@@ -112,8 +112,8 @@ public class ShopProfile extends Activity {
     }
 
     private void openMaps(String mapsURL){
-        String uri = String.format(Locale.ENGLISH, "mapURL");
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapsURL));
         startActivity(intent);
     }
 }

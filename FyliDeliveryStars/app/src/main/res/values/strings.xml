@@ -41,5 +41,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_shop_lister">ShopLister</string>
     <string name="title_activity_shop_profile">ShopProfile</string>
+    <string name="title_activity_contact">Contact</string>
 
 </resources>

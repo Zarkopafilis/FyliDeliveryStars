@@ -64,9 +64,8 @@ public class MainMenuActivity extends Activity implements AdapterView.OnItemClic
 
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(self , ContactActivity.class);
-               // startActivity(intent);
-
+                Intent intent = new Intent(self , Contact.class);
+                startActivity(intent);
             }
         });
 

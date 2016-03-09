@@ -34,6 +34,10 @@
             android:name=".ShopProfile"
             android:label="@string/title_activity_shop_profile" >
         </activity>
+        <activity
+            android:name=".Contact"
+            android:label="@string/title_activity_contact" >
+        </activity>
     </application>
 
 </manifest>

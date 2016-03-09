@@ -27,7 +27,8 @@
         android:layout_above="@+id/contactText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView" />
+        android:layout_below="@+id/textView"
+        android:clickable="true"/>
 
     <TextView
         android:layout_width="wrap_content"
