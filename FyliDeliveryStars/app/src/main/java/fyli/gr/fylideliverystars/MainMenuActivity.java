@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -90,7 +89,7 @@ public class MainMenuActivity extends Activity implements AdapterView.OnItemClic
                 return;
         }
 
-        Log.d("slp" , "shopType:" + shopType);
+        //Log.d("slp" , "shopType:" + shopType);
 
         Intent intent = new Intent();
         intent.setClass(this, DeliveryOrTakeAway.class);

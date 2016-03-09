@@ -10,10 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.Locale;
-
 import fyli.gr.fylideliverystars.provider.Shop;
 
 public class ShopProfile extends Activity {
@@ -39,6 +35,9 @@ public class ShopProfile extends Activity {
         workHoursText.setText(shop.getWorkHours());
 
         Button showLocButton = (Button) findViewById(R.id.showLocationButton);
+
+        showLocButton.setText(shop.getLocation());
+
         showLocButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,34 +48,51 @@ public class ShopProfile extends Activity {
         Button phone1 = (Button) findViewById(R.id.telephone1Button);
         Button phone2 = (Button) findViewById(R.id.telephone2Button);
 
+        //Log.d("slp", "telephone length: " + shop.getTelephones().length);
+
         switch(shop.getTelephones().length){
             default:
                 phone1.setVisibility(View.INVISIBLE);
                 phone2.setVisibility(View.INVISIBLE);
+                break;
             case 1:
-                phone1.setText(shop.getTelephones()[0]);
-                phone1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dial(shop.getTelephones()[0]);
-                    }
-                });
+                if(!phone1.equals("")) {
+                    phone1.setText(shop.getTelephones()[0]);
+                    phone1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dial(shop.getTelephones()[0]);
+                        }
+                    });
+                }else{
+                    phone1.setVisibility(View.INVISIBLE);
+                }
                 phone2.setVisibility(View.INVISIBLE);
+                break;
             case 2:
-                phone1.setText(shop.getTelephones()[0]);
-                phone1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dial(shop.getTelephones()[0]);
-                    }
-                });
-                phone2.setText(shop.getTelephones()[1]);
-                phone2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dial(shop.getTelephones()[1]);
-                    }
-                });
+                if(!phone1.equals("")) {
+                    phone1.setText(shop.getTelephones()[0]);
+                    phone1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dial(shop.getTelephones()[0]);
+                        }
+                    });
+                }else{
+                    phone1.setVisibility(View.INVISIBLE);
+                }
+                if(!phone2.equals("")) {
+                    phone2.setText(shop.getTelephones()[1]);
+                    phone2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dial(shop.getTelephones()[1]);
+                        }
+                    });
+                }else{
+                    phone2.setVisibility(View.INVISIBLE);
+                }
+                break;
         }
 
 
