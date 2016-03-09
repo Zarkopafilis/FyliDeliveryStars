@@ -24,11 +24,12 @@
         android:textColor="#000000"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
-        android:layout_above="@+id/contactText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:layout_above="@+id/contactText"
+        android:paddingTop="7dp" />
 
     <TextView
         android:layout_width="wrap_content"

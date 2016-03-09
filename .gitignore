@@ -40,3 +40,4 @@ captures/
 
 #Sensitive Data Files
 *.csv
+*.tsv

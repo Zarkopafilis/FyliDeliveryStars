@@ -1,7 +1,6 @@
 package fyli.gr.fylideliverystars.provider;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +20,7 @@ public class CSVParser {
 
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(shopType + ".csv")));
+            reader = new BufferedReader(new InputStreamReader(context.getAssets().open(shopType + ".tsv")));
             String line;
             boolean firstTime = true;
            // Log.d("slp" , "reading shops of type :" + shopType);
@@ -35,7 +34,8 @@ public class CSVParser {
               //  Log.d("slp" , line);
               //  Log.d("slp" , "parsing shop data");
 
-                String[] rowData = line.split(",");
+
+                String[] rowData = line.split("\t");
 
                // Log.d("slp" , "splitting rowData");
                 for(String rowDataSplit: rowData){
@@ -88,7 +88,7 @@ public class CSVParser {
                 boolean citizenCard = Boolean.valueOf(rowData[10].trim().toLowerCase());
                 //Log.d("slp", "citizenCard:" + citizenCard + " original: " + rowData[9]);
                 boolean isDoingDelivery = Boolean.valueOf(rowData[11].trim().toLowerCase());
-                //Log.d("slp", "isDoingDelivery:" + isDoingDelivery + " original:" + rowData[10]);
+                //Log.d("slp", "isDoingDelivery:" + isDoingDelivery + " original:" + rowData[11]);
 
                 Shop shop = new Shop(name,workHours,telephones,location,GPSCoordinates,stars, productPrice ,specialOffers, critique,citizenCard,isDoingDelivery);
                 shopList.add(shop);

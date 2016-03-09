@@ -3,7 +3,6 @@ package fyli.gr.fylideliverystars;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +31,8 @@ public class ShopLister extends Activity implements AdapterView.OnItemClickListe
             delivery = extras.getBoolean("delivery");
         }
 
-        Log.d("slp" , "initializing shop list provider");
+        //Log.d("slp" , "initializing shop list provider, delivery:"  + delivery);
+        //Log.d("slp", "shopType:" + shopType);
         slp = new ShopListProvider(shopType,delivery);
         List<String> names = slp.generateShopList(getApplicationContext());
 

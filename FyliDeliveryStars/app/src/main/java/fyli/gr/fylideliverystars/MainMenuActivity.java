@@ -6,17 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +37,7 @@ public class MainMenuActivity extends Activity implements AdapterView.OnItemClic
         ArrayList<String> shopTypeArray = new ArrayList<String>();
         shopTypeArray.add("Σουβλάκι");
         shopTypeArray.add("Pizza");
-        shopTypeArray.add("Burger");
+        shopTypeArray.add("Burger - Sandwitch");
         shopTypeArray.add("Κρέπα");
         shopTypeArray.add("Καφές");
 
@@ -87,6 +81,7 @@ public class MainMenuActivity extends Activity implements AdapterView.OnItemClic
                 break;
             case 3:
                 shopType="pancake";
+                break;
             case 4:
                 shopType="coffee";
                 break;
@@ -94,6 +89,8 @@ public class MainMenuActivity extends Activity implements AdapterView.OnItemClic
                 shopType = "souvlaki";
                 return;
         }
+
+        Log.d("slp" , "shopType:" + shopType);
 
         Intent intent = new Intent();
         intent.setClass(this, DeliveryOrTakeAway.class);

@@ -27,12 +27,14 @@ public class ShopListProvider {
         shopsCached = shops;
 
         if(deliveryOnly) {
+           // Log.d("slp", "deliveryOnlyLoop");
             for (Shop shop : shops) {
                 if(shop.isDoingDelivery){
                     shopList.add(shop.name);
                 }
             }
         }else{//take-away -> add everything
+            //Log.d("slp", "takeAwayLoop");
             for (Shop shop : shops) {
                 shopList.add(shop.name);
             }
@@ -43,7 +45,7 @@ public class ShopListProvider {
     }
 
     public Shop getCachedShopFromList(int index){
-        if(shopsCached != null) {
+        if(shopsCached != null && index < shopsCached.size()) {
             return shopsCached.get(index);
         }
         return null;
