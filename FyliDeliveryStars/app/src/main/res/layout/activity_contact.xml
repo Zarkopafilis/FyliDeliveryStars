@@ -13,26 +13,14 @@
         android:text="Τηλέφωνο επικοινωνίας:"
         android:id="@+id/testdummy"
         android:textSize="26dp"
-        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Επικοινωνία"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="50dp"
-        />
 
     <Button
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="6975820690"
+        android:text=" +306975810690"
         android:id="@+id/contactNumberButton"
         android:textSize="30dp"
         android:layout_marginTop="25dp"
@@ -47,19 +35,20 @@
         android:text="Ηλεκτρονικό Ταχυδρομείο:"
         android:id="@+id/textView3"
         android:textSize="26dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/contactNumberButton"
+        android:layout_centerHorizontal="true" />
 
     <Button
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="george.tigas@gmail.com"
+        android:text="fylideliverystars@gmail.com"
         android:id="@+id/sendEmailButton"
+        android:textSize="25dp"
+        android:textColor="@color/myAccentColor"
+        android:textAllCaps="false"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:textSize="20dp"
-        android:textColor="@color/myAccentColor"/>
+        android:layout_marginTop="25dp" />
 </RelativeLayout>

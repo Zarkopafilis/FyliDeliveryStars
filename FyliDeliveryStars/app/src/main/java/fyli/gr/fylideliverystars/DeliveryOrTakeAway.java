@@ -17,6 +17,7 @@ public class DeliveryOrTakeAway extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_delivery_or_take_away);
 
         Bundle extras = getIntent().getExtras();

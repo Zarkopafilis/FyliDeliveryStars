@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import fyli.gr.fylideliverystars.provider.Shop;
@@ -32,6 +34,17 @@ public class ShopProfile extends Activity {
         }
 
         getActionBar().setTitle(shop.getName());
+
+        ListView specialOffersListView = (ListView) findViewById(R.id.specialOffersList);
+
+        ArrayAdapter<String> specialOffersListViewAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.list_item_simple_black_tv, shop.getSpecialOffers().split("~"));
+        specialOffersListView.setAdapter(specialOffersListViewAdapter);
+        specialOffersListView.setClickable(false);
+        specialOffersListViewAdapter.notifyDataSetChanged();
+
+        TextView critique = (TextView) findViewById(R.id.critiqueTextView);
+
+        critique.setText(shop.getCritique());
 
         TextView workHoursText = (TextView) findViewById(R.id.workHoursTextView);
         workHoursText.setText(shop.getWorkHours());

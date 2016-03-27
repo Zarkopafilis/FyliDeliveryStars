@@ -17,6 +17,8 @@ public class Contact extends Activity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_contact);
 
+        getActionBar().setTitle("Επικοινωνία");
+
         final Button contactDial = (Button) findViewById(R.id.contactNumberButton);
         contactDial.setOnClickListener(new View.OnClickListener() {
             @Override

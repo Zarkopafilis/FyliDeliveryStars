@@ -66,8 +66,8 @@ public class CSVParser {
                 String priceRaw = rowData[7];
                // Log.d("slp ","priceRaw: " + priceRaw);
 
-                String[] productList = productRaw.split("|");
-                String[] priceList = priceRaw.split("|");
+                String[] productList = productRaw.split("~");
+                String[] priceList = priceRaw.split("~");
 
                 HashMap<String, String> productPrice = new HashMap<>();
 

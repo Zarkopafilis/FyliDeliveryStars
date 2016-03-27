@@ -13,76 +13,143 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true">
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="0:00-24:00"
+                        android:id="@+id/workHoursTextView"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_column="38" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Ωράριο:"
+                        android:id="@+id/workHoursDummyTextView"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+                </RelativeLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Τηλεφωνο 1"
+                        android:id="@+id/telephone1Button"
+                        android:layout_below="@+id/showLocationButton"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Τηλεφωνο 2"
+                        android:id="@+id/telephone2Button"
+                        android:layout_alignBottom="@+id/telephone1Button"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_column="38" />
+                </RelativeLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Προβολη Τοποθεσίας"
+                    android:id="@+id/showLocationButton"
+                    android:layout_below="@+id/workHoursDummyTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Ειδικές προσφορές για χρήστες της εφαρμογής"
+                    android:id="@+id/textView2"
+                    android:layout_below="@+id/telephone1Button"
+                    android:layout_toStartOf="@+id/workHoursTextView"
+                    android:layout_alignParentEnd="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <fyli.gr.fylideliverystars.util.NonScrollListView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/specialOffersList"
+                        android:layout_below="@+id/textView2"
+                        android:layout_toStartOf="@+id/workHoursTextView"
+                        android:layout_alignParentEnd="true"
+                        android:scrollbars="none"/>
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Παρατηρήσεις"
+                    android:id="@+id/textView4" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Μπλα Μπλα"
+                    android:id="@+id/critiqueTextView" />
+            </TableRow>
+
+        </TableLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Ειδικές προσφορές για χρήστες της εφαρμογής"
-            android:id="@+id/specialOffersDummyTextView"
-            android:layout_below="@+id/telephone1Button"
-            android:layout_alignRight="@+id/workHoursTextView"
-            android:layout_alignEnd="@+id/workHoursTextView"
-            android:layout_marginTop="25dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Τηλεφωνο 1"
-            android:id="@+id/telephone1Button"
-            android:layout_below="@+id/showLocationButton"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Προβολη Τοποθεσίας"
-            android:id="@+id/showLocationButton"
-            android:layout_below="@+id/workHoursDummyTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="0:00-24:00"
-            android:id="@+id/workHoursTextView"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Ωράριο:"
-            android:id="@+id/workHoursDummyTextView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Τηλεφωνο 2"
-            android:id="@+id/telephone2Button"
-            android:layout_alignBottom="@+id/telephone1Button"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-    </RelativeLayout>
 
 </RelativeLayout>
