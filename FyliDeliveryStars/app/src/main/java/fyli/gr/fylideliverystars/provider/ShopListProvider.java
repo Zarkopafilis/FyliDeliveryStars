@@ -24,22 +24,25 @@ public class ShopListProvider {
         List<String> shopList = new ArrayList<String>();
 
         List<Shop> shops = CSVParser.getShops(shopType, context);
-        shopsCached = shops;
+        List<Shop> shopCacheBuilder = new ArrayList<>();
 
         if(deliveryOnly) {
            // Log.d("slp", "deliveryOnlyLoop");
             for (Shop shop : shops) {
                 if(shop.isDoingDelivery){
                     shopList.add(shop.name);
+                    shopCacheBuilder.add(shop);
                 }
             }
         }else{//take-away -> add everything
             //Log.d("slp", "takeAwayLoop");
+            shopCacheBuilder = shops;
             for (Shop shop : shops) {
                 shopList.add(shop.name);
             }
         }
 
+        shopsCached = shopCacheBuilder;
 
         return shopList;
     }

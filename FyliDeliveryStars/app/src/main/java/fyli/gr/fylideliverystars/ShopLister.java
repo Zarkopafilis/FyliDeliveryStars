@@ -1,11 +1,12 @@
 package fyli.gr.fylideliverystars;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ public class ShopLister extends Activity implements AdapterView.OnItemClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_shop_lister);
 
         Bundle extras = getIntent().getExtras();
@@ -30,7 +32,6 @@ public class ShopLister extends Activity implements AdapterView.OnItemClickListe
             shopType = extras.getString("shopType");
             delivery = extras.getBoolean("delivery");
         }
-
         //Log.d("slp" , "initializing shop list provider, delivery:"  + delivery);
         //Log.d("slp", "shopType:" + shopType);
         slp = new ShopListProvider(shopType,delivery);
@@ -51,16 +52,13 @@ public class ShopLister extends Activity implements AdapterView.OnItemClickListe
             Intent intent = new Intent();
             intent.setClass(this, ShopProfile.class);
             intent.putExtra("shop", slp.getCachedShopFromList(position));
-            startActivity(intent);
+
+            startActivity(intent,
+                    ActivityOptions
+                            .makeSceneTransitionAnimation(this).toBundle());
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_shop_lister, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

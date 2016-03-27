@@ -1,13 +1,14 @@
 package fyli.gr.fylideliverystars;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -19,10 +20,15 @@ import java.util.ArrayList;
 
 public class MainMenuActivity extends Activity implements AdapterView.OnItemClickListener{
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+
         setContentView(R.layout.activity_main_menu);
+
 
         //Show welcoming toast
         Context context = getApplicationContext();
@@ -58,6 +64,7 @@ public class MainMenuActivity extends Activity implements AdapterView.OnItemClic
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(self , Contact.class);
+                final Context c = self.getApplicationContext();
                 startActivity(intent);
             }
         });
@@ -103,15 +110,11 @@ public class MainMenuActivity extends Activity implements AdapterView.OnItemClic
         Intent setIntent = new Intent(Intent.ACTION_MAIN);
         setIntent.addCategory(Intent.CATEGORY_HOME);
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(setIntent);
+        startActivity(setIntent,
+                ActivityOptions
+                        .makeSceneTransitionAnimation(this).toBundle());
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

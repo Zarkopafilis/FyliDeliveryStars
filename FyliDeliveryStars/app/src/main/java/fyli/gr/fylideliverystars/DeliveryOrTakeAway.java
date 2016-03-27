@@ -1,12 +1,12 @@
 package fyli.gr.fylideliverystars;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.Window;
 import android.widget.TextView;
 
 public class DeliveryOrTakeAway extends Activity {
@@ -16,6 +16,7 @@ public class DeliveryOrTakeAway extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_delivery_or_take_away);
 
         Bundle extras = getIntent().getExtras();
@@ -51,15 +52,11 @@ public class DeliveryOrTakeAway extends Activity {
         intent.setClass(getApplicationContext(), ShopLister.class);
         intent.putExtra("shopType" , shopType);
         intent.putExtra("delivery" , delivery);
-        startActivity(intent);
+        startActivity(intent,
+                ActivityOptions
+                        .makeSceneTransitionAnimation(this).toBundle());
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_delivery_or_take_away, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
