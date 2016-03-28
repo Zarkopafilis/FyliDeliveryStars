@@ -46,6 +46,7 @@ public class MainMenuActivity extends Activity implements AdapterView.OnItemClic
         shopTypeArray.add("Κρέπα");
         shopTypeArray.add("Καφές");
 
+
         //Set the listview
         ListView shopTypeListView = (ListView) findViewById(R.id.ShopTypeList);
         shopTypeListView.setOnItemClickListener(this);
