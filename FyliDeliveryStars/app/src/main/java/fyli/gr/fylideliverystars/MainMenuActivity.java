@@ -45,7 +45,7 @@ public class MainMenuActivity extends Activity{
                 int width  = frame.getMeasuredWidth();
                 int height = frame.getMeasuredHeight();
 
-                calculateAfterCallback(width,height);
+                calculateAfterCallback(width,height, (int) frame.getX() ,(int) frame.getY());
             }
         });
 
@@ -118,7 +118,7 @@ public class MainMenuActivity extends Activity{
         });
     }
 
-    private void calculateAfterCallback(int frameWidth, int frameHeight){
+    private void calculateAfterCallback(int frameWidth, int frameHeight,int frameX ,int frameY){
         int buttonDiameter = (int)( Math.max(frameWidth, frameHeight) * 0.15 + Math.min(frameWidth , frameHeight) * 0.2) / 2;
         Log.d("slp" , "buttonDiameter:" + buttonDiameter);
         //Σουβλάκι => 8 chars
@@ -128,24 +128,48 @@ public class MainMenuActivity extends Activity{
         //Καφές => 5 chars
         //The text size needs to fit the biggest word (8 chars)
         int textSize = (int) ((int) buttonDiameter/(8*2));
+        int polygonCircleDiameter = frameHeight - buttonDiameter;
+        int polygonSide = 0;
+        int sidePadding = 16;
+        //int souvlakiX = frameWidth / 2;
+        int souvlakiX = 1080/2;
+        int souvlakiY = frameY + buttonDiameter / 2;
+        int pizzaBurgerY = 0;
+        int pizzaX = 0;
+        int burgerX = pizzaX + 1;
+        int pancakeCoffeeY = frameY + frameHeight - buttonDiameter / 2;
+        int pancakeX = 0;
+        int coffeeX = pancakeX + polygonSide;
+
+        Log.d("slp" , "frameWidth-" + frameWidth + " frameHeight-" + frameHeight + " frameX-" + frameX + " frameY-" + frameY);
 
         RelativeLayout.LayoutParams souvlakiParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        souvlakiParams.leftMargin = souvlakiX - buttonDiameter / 2 + sidePadding;
+        souvlakiParams.topMargin = souvlakiY - buttonDiameter / 2;
         souvlakiButton.setLayoutParams (souvlakiParams);
         souvlakiButton.setTextSize(textSize);
 
         RelativeLayout.LayoutParams pizzaParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        pizzaParams.leftMargin = pizzaX +  sidePadding;
+        pizzaParams.topMargin = frameY + 100;
         pizzaButton.setLayoutParams(pizzaParams);
         pizzaButton.setTextSize(textSize);
 
         RelativeLayout.LayoutParams burgerParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        burgerParams.leftMargin = frameWidth - sidePadding - buttonDiameter;
+        burgerParams.topMargin = frameY + 100;
         burgerButton.setLayoutParams(burgerParams);
         burgerButton.setTextSize(textSize);
 
         RelativeLayout.LayoutParams pancakeParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        pancakeParams.leftMargin = pancakeX;
+        pancakeParams.topMargin = pancakeCoffeeY;
         pancakeButton.setLayoutParams(pancakeParams);
         pancakeButton.setTextSize(textSize);
 
         RelativeLayout.LayoutParams coffeeParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        pancakeParams.leftMargin = pancakeX;
+        pancakeParams.topMargin = pancakeCoffeeY;
         coffeeButton.setLayoutParams (coffeeParams);
         coffeeButton.setTextSize(textSize);
 
