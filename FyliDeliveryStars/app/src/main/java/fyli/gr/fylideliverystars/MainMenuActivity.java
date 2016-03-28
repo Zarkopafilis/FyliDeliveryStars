@@ -4,20 +4,22 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 public class MainMenuActivity extends Activity{
 
+    private Button souvlakiButton, pizzaButton, burgerButton,pancakeButton,coffeeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,50 +32,35 @@ public class MainMenuActivity extends Activity{
         final Context self = this;
 
         //Get screen dimensions
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int screenWidth = size.x;
-        int screenHeight = size.y;
-        int buttonDiameter = (int)( Math.max(screenHeight, screenWidth) * 0.15 + Math.min(screenHeight , screenWidth) * 0.2) / 2;
-        Log.d("slp" , "buttonDiameter:" + buttonDiameter);
+        final FrameLayout frame = (FrameLayout) findViewById(R.id.circleButtonsAreaPlaceholder);
+        ViewTreeObserver vto = frame.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if (Build.VERSION.SDK_INT < 16)
+                    frame.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                else
+                    frame.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
-        //Σουβλάκι => 8 chars
-        //Pizza => 5 chars
-        //Burger => 6 chars
-        //Κρέπα => 5 chars
-        //Καφές => 5 chars
-        //The text size needs to fit the biggest word (8 chars)
-        int textSize = (int) ((int) buttonDiameter/(8*2));
+                int width  = frame.getMeasuredWidth();
+                int height = frame.getMeasuredHeight();
 
+                calculateAfterCallback(width,height);
+            }
+        });
 
-        Button souvlakiButton = (Button) findViewById(R.id.souvlakiButton);
-        Button pizzaButton = (Button) findViewById(R.id.pizzaButton);
-        Button burgerButton = (Button) findViewById(R.id.burgerButton);
-        Button pancakeButton = (Button) findViewById(R.id.pancakeButton);
-        Button coffeeButton = (Button) findViewById(R.id.coffeeButton);
+        souvlakiButton = (Button) findViewById(R.id.souvlakiButton);
+        pizzaButton = (Button) findViewById(R.id.pizzaButton);
+        burgerButton = (Button) findViewById(R.id.burgerButton);
+        pancakeButton = (Button) findViewById(R.id.pancakeButton);
+        coffeeButton = (Button) findViewById(R.id.coffeeButton);
 
-        //Buttons are circles
-        RelativeLayout.LayoutParams souvlakiParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
-        souvlakiButton.setLayoutParams (souvlakiParams);
-        souvlakiButton.setTextSize(textSize);
-
-        RelativeLayout.LayoutParams pizzaParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
-        pizzaButton.setLayoutParams(pizzaParams);
-        pizzaButton.setTextSize(textSize);
-
-        RelativeLayout.LayoutParams burgerParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
-        burgerButton.setLayoutParams(burgerParams);
-        burgerButton.setTextSize(textSize);
-
-        RelativeLayout.LayoutParams pancakeParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
-        pancakeButton.setLayoutParams(pancakeParams);
-        pancakeButton.setTextSize(textSize);
-
-        RelativeLayout.LayoutParams coffeeParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
-        coffeeButton.setLayoutParams (coffeeParams);
-        coffeeButton.setTextSize(textSize);
-
+        //Make them appear after frame layout callback
+        souvlakiButton.setVisibility(View.INVISIBLE);
+        pizzaButton.setVisibility(View.INVISIBLE);
+        burgerButton.setVisibility(View.INVISIBLE);
+        pancakeButton.setVisibility(View.INVISIBLE);
+        coffeeButton.setVisibility(View.INVISIBLE);
 
         //Listener setup
         souvlakiButton.setOnClickListener(new View.OnClickListener() {
@@ -116,8 +103,6 @@ public class MainMenuActivity extends Activity{
             }
         });
 
-
-
         //set up contact listener
         TextView contactText = (TextView) findViewById(R.id.contactText);
         final Activity thisActivity = this;
@@ -131,31 +116,44 @@ public class MainMenuActivity extends Activity{
                                 .makeSceneTransitionAnimation(thisActivity).toBundle());
             }
         });
+    }
 
-        /*//Show welcoming toast
-        Context context = getApplicationContext();
-        CharSequence welcome_text = getResources().getString(R.string.welcome_toast);
-        int duration = Toast.LENGTH_SHORT;
-        final Toast toast = Toast.makeText(context, welcome_text, duration);
-        toast.setGravity(Gravity.CENTER,0,0);
-        toast.show();*/
+    private void calculateAfterCallback(int frameWidth, int frameHeight){
+        int buttonDiameter = (int)( Math.max(frameWidth, frameHeight) * 0.15 + Math.min(frameWidth , frameHeight) * 0.2) / 2;
+        Log.d("slp" , "buttonDiameter:" + buttonDiameter);
+        //Σουβλάκι => 8 chars
+        //Pizza => 5 chars
+        //Burger => 6 chars
+        //Κρέπα => 5 chars
+        //Καφές => 5 chars
+        //The text size needs to fit the biggest word (8 chars)
+        int textSize = (int) ((int) buttonDiameter/(8*2));
 
-        /*//Shop types
-        ArrayList<String> shopTypeArray = new ArrayList<String>();
-        shopTypeArray.add("Σουβλάκι");
-        shopTypeArray.add("Pizza");
-        shopTypeArray.add("Burger - Sandwitch");
-        shopTypeArray.add("Κρέπα");
-        shopTypeArray.add("Καφές");
+        RelativeLayout.LayoutParams souvlakiParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        souvlakiButton.setLayoutParams (souvlakiParams);
+        souvlakiButton.setTextSize(textSize);
 
-        //Set the listview
-        ListView shopTypeListView = (ListView) findViewById(R.id.ShopTypeList);
-        shopTypeListView.setOnItemClickListener(this);
+        RelativeLayout.LayoutParams pizzaParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        pizzaButton.setLayoutParams(pizzaParams);
+        pizzaButton.setTextSize(textSize);
 
-        ArrayAdapter<String> shopTypeListAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.list_item_simple_black_tv, shopTypeArray);
-        shopTypeListView.setAdapter(shopTypeListAdapter);
-        shopTypeListAdapter.notifyDataSetChanged();*/
+        RelativeLayout.LayoutParams burgerParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        burgerButton.setLayoutParams(burgerParams);
+        burgerButton.setTextSize(textSize);
 
+        RelativeLayout.LayoutParams pancakeParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        pancakeButton.setLayoutParams(pancakeParams);
+        pancakeButton.setTextSize(textSize);
+
+        RelativeLayout.LayoutParams coffeeParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
+        coffeeButton.setLayoutParams (coffeeParams);
+        coffeeButton.setTextSize(textSize);
+
+        souvlakiButton.setVisibility(View.VISIBLE);
+        pizzaButton.setVisibility(View.VISIBLE);
+        burgerButton.setVisibility(View.VISIBLE);
+        pancakeButton.setVisibility(View.VISIBLE);
+        coffeeButton.setVisibility(View.VISIBLE);
     }
 
     private void launchShopLister(String shopType){
