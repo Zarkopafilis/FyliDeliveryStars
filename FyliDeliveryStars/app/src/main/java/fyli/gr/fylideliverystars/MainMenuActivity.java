@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -119,8 +118,8 @@ public class MainMenuActivity extends Activity{
     }
 
     private void calculateAfterCallback(int frameWidth, int frameHeight,int frameX ,int frameY){
+        int sidePadding = 16;
         int buttonDiameter = (int)( Math.max(frameWidth, frameHeight) * 0.15 + Math.min(frameWidth , frameHeight) * 0.2) / 2;
-        Log.d("slp" , "buttonDiameter:" + buttonDiameter);
         //Σουβλάκι => 8 chars
         //Pizza => 5 chars
         //Burger => 6 chars
@@ -128,50 +127,48 @@ public class MainMenuActivity extends Activity{
         //Καφές => 5 chars
         //The text size needs to fit the biggest word (8 chars)
         int textSize = (int) ((int) buttonDiameter/(8*2));
-        int polygonCircleDiameter = frameHeight - buttonDiameter;
-        int polygonSide = 0;
-        int sidePadding = 16;
+        int polygonCircleDiameter = frameWidth - sidePadding;
+        int polygonSide = (int) (polygonCircleDiameter * Math.sin(Math.PI / 5 ));
         //int souvlakiX = frameWidth / 2;
         int souvlakiX = 1080/2;
         int souvlakiY = frameY + buttonDiameter / 2;
-        int pizzaBurgerY = 0;
+        int pizzaBurgerY = (int) (frameY + polygonCircleDiameter / 2 - ((polygonCircleDiameter / 2) * Math.sin(Math.toRadians(18))));
         int pizzaX = 0;
-        int burgerX = pizzaX + 1;
-        int pancakeCoffeeY = frameY + frameHeight - buttonDiameter / 2;
-        int pancakeX = 0;
-        int coffeeX = pancakeX + polygonSide;
-
-        Log.d("slp" , "frameWidth-" + frameWidth + " frameHeight-" + frameHeight + " frameX-" + frameX + " frameY-" + frameY);
+        int burgerX = frameWidth - sidePadding - buttonDiameter;
+        int pancakeCoffeeY = (int) (frameWidth / 1.4 - buttonDiameter / 2);
+        int pancakeX = (frameWidth - polygonSide) / 2;
+        int coffeeX = frameWidth - pancakeX;
 
         RelativeLayout.LayoutParams souvlakiParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
-        souvlakiParams.leftMargin = souvlakiX - buttonDiameter / 2 + sidePadding;
-        souvlakiParams.topMargin = souvlakiY - buttonDiameter / 2;
-        souvlakiButton.setLayoutParams (souvlakiParams);
+        souvlakiParams.leftMargin = souvlakiX - buttonDiameter / 2;
+        souvlakiParams.topMargin = souvlakiY - buttonDiameter / 2 + sidePadding;
+        souvlakiButton.setLayoutParams(souvlakiParams);
         souvlakiButton.setTextSize(textSize);
 
         RelativeLayout.LayoutParams pizzaParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
         pizzaParams.leftMargin = pizzaX +  sidePadding;
-        pizzaParams.topMargin = frameY + 100;
+        pizzaParams.topMargin = pizzaBurgerY - buttonDiameter / 2;
         pizzaButton.setLayoutParams(pizzaParams);
         pizzaButton.setTextSize(textSize);
 
         RelativeLayout.LayoutParams burgerParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
-        burgerParams.leftMargin = frameWidth - sidePadding - buttonDiameter;
-        burgerParams.topMargin = frameY + 100;
+        burgerParams.leftMargin = burgerX;
+        burgerParams.topMargin = pizzaBurgerY - buttonDiameter / 2;
         burgerButton.setLayoutParams(burgerParams);
         burgerButton.setTextSize(textSize);
 
         RelativeLayout.LayoutParams pancakeParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
         pancakeParams.leftMargin = pancakeX;
-        pancakeParams.topMargin = pancakeCoffeeY;
+        pancakeParams.topMargin = frameY + pancakeCoffeeY;
         pancakeButton.setLayoutParams(pancakeParams);
         pancakeButton.setTextSize(textSize);
 
         RelativeLayout.LayoutParams coffeeParams = new RelativeLayout.LayoutParams(buttonDiameter , buttonDiameter);
-        pancakeParams.leftMargin = pancakeX;
-        pancakeParams.topMargin = pancakeCoffeeY;
-        coffeeButton.setLayoutParams (coffeeParams);
+        coffeeParams.leftMargin = coffeeX - buttonDiameter;
+        coffeeParams.topMargin = frameY + pancakeCoffeeY;
+        coffeeButton.setLayoutParams(coffeeParams);
         coffeeButton.setTextSize(textSize);
+
 
         souvlakiButton.setVisibility(View.VISIBLE);
         pizzaButton.setVisibility(View.VISIBLE);
@@ -185,42 +182,8 @@ public class MainMenuActivity extends Activity{
         intent.setClass(this, DeliveryOrTakeAway.class);
         intent.putExtra("shopType" , shopType);
         startActivity(intent,
-                ActivityOptions
-                        .makeSceneTransitionAnimation(this).toBundle());
+                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
-
-    /*public void onItemClick(AdapterView<?> l, View v, int position, long id) {
-
-        String shopType = "souvlaki";
-
-        switch (position) {
-            case 0:
-                shopType="souvlaki";
-                break;
-            case 1:
-                shopType="pizza";
-                break;
-            case 2:
-                shopType="burger";
-                break;
-            case 3:
-                shopType="pancake";
-                break;
-            case 4:
-                shopType="coffee";
-                break;
-            default:
-                shopType = "souvlaki";
-                return;
-        }
-
-        //Log.d("slp" , "shopType:" + shopType);
-
-        Intent intent = new Intent();
-        intent.setClass(this, DeliveryOrTakeAway.class);
-        intent.putExtra("shopType" , shopType);
-        startActivity(intent);
-    }*/
 
     //Don't go to the splash screen and cause hang
     @Override
