@@ -4,15 +4,11 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -30,36 +26,11 @@ public class MainMenuActivity extends Activity{
 
         final Context self = this;
 
-        //Get screen dimensions
-        final FrameLayout frame = (FrameLayout) findViewById(R.id.circleButtonsAreaPlaceholder);
-        ViewTreeObserver vto = frame.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                if (Build.VERSION.SDK_INT < 16)
-                    frame.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                else
-                    frame.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                int width  = frame.getMeasuredWidth();
-                int height = frame.getMeasuredHeight();
-
-                calculateAfterCallback(width,height, (int) frame.getX() ,(int) frame.getY());
-            }
-        });
-
         souvlakiButton = (Button) findViewById(R.id.souvlakiButton);
         pizzaButton = (Button) findViewById(R.id.pizzaButton);
         burgerButton = (Button) findViewById(R.id.burgerButton);
         pancakeButton = (Button) findViewById(R.id.pancakeButton);
         coffeeButton = (Button) findViewById(R.id.coffeeButton);
-
-        //Make them appear after frame layout callback
-        souvlakiButton.setVisibility(View.INVISIBLE);
-        pizzaButton.setVisibility(View.INVISIBLE);
-        burgerButton.setVisibility(View.INVISIBLE);
-        pancakeButton.setVisibility(View.INVISIBLE);
-        coffeeButton.setVisibility(View.INVISIBLE);
 
         //Listener setup
         souvlakiButton.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +88,8 @@ public class MainMenuActivity extends Activity{
         });
     }
 
-    private void calculateAfterCallback(int frameWidth, int frameHeight,int frameX ,int frameY){
+    //I ain't throwin this away
+    /*private void calculateAfterCallback(int frameWidth, int frameHeight,int frameX ,int frameY){
         int sidePadding = 16;
         int buttonDiameter = (int)( Math.max(frameWidth, frameHeight) * 0.15 + Math.min(frameWidth , frameHeight) * 0.2) / 2;
         //Σουβλάκι => 8 chars
@@ -175,7 +147,7 @@ public class MainMenuActivity extends Activity{
         burgerButton.setVisibility(View.VISIBLE);
         pancakeButton.setVisibility(View.VISIBLE);
         coffeeButton.setVisibility(View.VISIBLE);
-    }
+    }*/
 
     private void launchShopLister(String shopType){
         Intent intent = new Intent();

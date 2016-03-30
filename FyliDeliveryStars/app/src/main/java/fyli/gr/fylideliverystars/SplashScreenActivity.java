@@ -50,9 +50,8 @@ public class SplashScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash_screen);
-
-
 
         loadMainMenuWithDelay();
     }
@@ -60,40 +59,14 @@ public class SplashScreenActivity extends Activity {
     private void loadMainMenuWithDelay(){
         //Oldschool self reference
         final Context self = this;
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 //Jump to MainMenuActivity after 2500ms
-                Intent mainmenuIntent = new Intent(self, MainMenuActivity.class);
-                self.startActivity(mainmenuIntent);
+                Intent mainMenuIntent = new Intent(self, MainMenuActivity.class);
+                self.startActivity(mainMenuIntent);
             }
         }, 2500);
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // Trigger the initial hide() shortly after the activity has been
-        // created, to briefly hint to the user that UI controls
-        // are available.
-        delayedHide(0);
-    }
-
-    Handler mHideHandler = new Handler();
-    Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            mSystemUiHider.hide();
-        }
-    };
-
-    /**
-     * Schedules a call to hide() in [delay] milliseconds, canceling any
-     * previously scheduled calls.
-     */
-    private void delayedHide(int delayMillis) {
-        mHideHandler.removeCallbacks(mHideRunnable);
-        mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
 }

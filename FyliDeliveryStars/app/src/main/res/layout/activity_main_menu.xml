@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@color/bg"
     android:paddingTop="16dp"
     android:paddingBottom="16dp">
@@ -26,77 +26,74 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/round_button"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Καφές"
-        android:textColor="#fff"
-        android:id="@+id/coffeeButton"
-        android:layout_below="@+id/pancakeButton"
-        android:layout_centerHorizontal="true"
-        android:layout_row="54"
-        android:layout_column="4" />
-
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/round_button"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Κρέπα"
-        android:textColor="#fff"
-        android:id="@+id/pancakeButton"
-        android:layout_below="@+id/burgerButton"
-        android:layout_centerHorizontal="true"
-        android:layout_row="54"
-        android:layout_column="0" />
-
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/round_button"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Burger"
-        android:textColor="#fff"
-        android:id="@+id/burgerButton"
-        android:layout_below="@+id/pizzaButton"
-        android:layout_centerHorizontal="true"
-        android:layout_row="53"
-        android:layout_column="3" />
-
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/round_button"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Pizza"
-        android:textColor="#fff"
-        android:id="@+id/pizzaButton"
-        android:layout_below="@+id/souvlakiButton"
-        android:layout_centerHorizontal="true"
-        android:layout_row="0"
-        android:layout_column="4" />
-
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/round_button"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Σουβλακι"
-        android:textColor="#fff"
-        android:id="@+id/souvlakiButton"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_row="0"
-        android:layout_column="0" />
-
-    <FrameLayout
+    <android.support.percent.PercentRelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/contactText"
-        android:id="@+id/circleButtonsAreaPlaceholder"></FrameLayout>
+        android:layout_above="@+id/contactText">
+
+        <Button
+            app:layout_widthPercent="30%"
+            app:layout_heightPercent="20%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:text="Σουβλακι"
+            android:textColor="#fff"
+            android:id="@+id/souvlakiButton"
+            app:layout_marginTopPercent="0%"
+            app:layout_marginLeftPercent="33%"/>
+
+        <Button
+            app:layout_widthPercent="30%"
+            app:layout_heightPercent="20%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:text="Burger"
+            android:textColor="#fff"
+            android:id="@+id/burgerButton"
+            app:layout_marginTopPercent="66%"
+            app:layout_marginLeftPercent="33%"/>
+
+        <Button
+            app:layout_widthPercent="30%"
+            app:layout_heightPercent="20%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:text="Pizza"
+            android:textColor="#fff"
+            android:id="@+id/pizzaButton"
+            app:layout_marginTopPercent="0%"
+            app:layout_marginLeftPercent="66%"/>
+
+        <Button
+            app:layout_widthPercent="30%"
+            app:layout_heightPercent="20%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:text="Κρέπα"
+            android:textColor="#fff"
+            android:id="@+id/pancakeButton"
+            app:layout_marginTopPercent="66%"
+            app:layout_marginLeftPercent="66%"/>
+
+        <Button
+            app:layout_widthPercent="30%"
+            app:layout_heightPercent="20%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:text="Καφές"
+            android:textColor="#fff"
+            android:id="@+id/coffeeButton"
+            app:layout_marginTopPercent="33%"
+            app:layout_marginLeftPercent="50%" />
+
+        </android.support.percent.PercentRelativeLayout>
 
 </RelativeLayout>
