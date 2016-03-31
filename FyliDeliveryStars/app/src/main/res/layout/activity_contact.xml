@@ -1,10 +1,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="fyli.gr.fylideliverystars.Contact">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
+
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentBottom="true">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,9 +19,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Τηλέφωνο επικοινωνίας:"
         android:id="@+id/testdummy"
-        android:textSize="26dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        app:layout_marginTopPercent="10%"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -22,11 +29,10 @@
         android:text=" +306975810690"
         android:id="@+id/contactNumberButton"
         android:textSize="30dp"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/testdummy"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:backgroundTint="@color/myPrimaryColor"/>
+        android:backgroundTint="@color/myPrimaryColor"
+        app:layout_marginTopPercent="20%"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,23 +40,20 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Ηλεκτρονικό Ταχυδρομείο:"
         android:id="@+id/textView3"
-        android:textSize="26dp"
-        android:layout_marginTop="56dp"
-        android:layout_below="@+id/contactNumberButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent="50%"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="fylideliverystars@gmail.com"
         android:id="@+id/sendEmailButton"
-        android:textSize="20dp"
         android:textColor="@color/white"
         android:textAllCaps="false"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="25dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:backgroundTint="@color/myPrimaryColor"/>
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/myPrimaryColor"
+        app:layout_marginTopPercent="60%"/>
+
+</android.support.percent.PercentRelativeLayout>
 
 </RelativeLayout>

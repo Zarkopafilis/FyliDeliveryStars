@@ -8,17 +8,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/main_menu_tip"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="19dp"
-        android:textColor="#ffffff" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Επικοινωνία"
         android:id="@+id/contactText"
@@ -31,8 +20,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView"
-        android:layout_above="@+id/contactText">
+        android:layout_above="@+id/contactText"
+        android:layout_alignParentTop="true">
 
         <Button
             app:layout_widthPercent="30%"
@@ -43,9 +32,10 @@
             android:text="Σουβλάκι"
             android:textColor="#fff"
             android:id="@+id/souvlakiButton"
-            app:layout_marginTopPercent="0%"
+            app:layout_marginTopPercent="7%"
             app:layout_marginLeftPercent="18%"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
             app:layout_widthPercent="30%"
@@ -56,9 +46,10 @@
             android:text="Burger"
             android:textColor="#fff"
             android:id="@+id/burgerButton"
-            app:layout_marginTopPercent="66%"
+            app:layout_marginTopPercent="73%"
             app:layout_marginLeftPercent="18%"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
             app:layout_widthPercent="30%"
@@ -69,9 +60,10 @@
             android:text="Pizza"
             android:textColor="#fff"
             android:id="@+id/pizzaButton"
-            app:layout_marginTopPercent="0%"
+            app:layout_marginTopPercent="7%"
             app:layout_marginLeftPercent="51%"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
             app:layout_widthPercent="30%"
@@ -82,9 +74,10 @@
             android:text="Κρέπα"
             android:textColor="#fff"
             android:id="@+id/pancakeButton"
-            app:layout_marginTopPercent="66%"
+            app:layout_marginTopPercent="73%"
             app:layout_marginLeftPercent="51%"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
             app:layout_widthPercent="30%"
@@ -95,9 +88,10 @@
             android:text="Καφές"
             android:textColor="#fff"
             android:id="@+id/coffeeButton"
-            app:layout_marginTopPercent="33%"
+            app:layout_marginTopPercent="40%"
             app:layout_marginLeftPercent="35%"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         </android.support.percent.PercentRelativeLayout>
 

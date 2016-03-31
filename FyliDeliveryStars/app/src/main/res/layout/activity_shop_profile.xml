@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/scrollView"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:scrollbars="none">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -98,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Ειδικές προσφορές για χρήστες της εφαρμογής"
+                    android:text="Ειδικές προσφορές για χρήστες της εφαρμογής: "
                     android:id="@+id/textView2"
                     android:layout_below="@+id/telephone1Button"
                     android:layout_toStartOf="@+id/workHoursTextView"
@@ -133,7 +134,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Παρατηρήσεις"
+                    android:text="Παρατηρήσεις: "
                     android:id="@+id/textView4" />
             </TableRow>
 
