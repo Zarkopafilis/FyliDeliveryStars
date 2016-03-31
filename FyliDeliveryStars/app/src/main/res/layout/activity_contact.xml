@@ -17,7 +17,6 @@
         android:layout_marginTop="30dp" />
 
     <Button
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" +306975810690"
@@ -26,7 +25,8 @@
         android:layout_marginTop="25dp"
         android:layout_below="@+id/testdummy"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/myAccentColor"/>
+        android:textColor="@color/white"
+        android:backgroundTint="@color/myPrimaryColor"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,16 +40,17 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="fylideliverystars@gmail.com"
         android:id="@+id/sendEmailButton"
         android:textSize="20dp"
-        android:textColor="@color/myAccentColor"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:layout_below="@+id/textView3"
         android:layout_marginTop="25dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@color/myPrimaryColor"/>
+
 </RelativeLayout>
