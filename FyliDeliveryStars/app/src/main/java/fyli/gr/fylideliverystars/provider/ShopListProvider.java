@@ -23,8 +23,10 @@ public class ShopListProvider {
     public List<String> generateShopList(Context context){
         List<String> shopList = new ArrayList<String>();
 
-        List<Shop> shops = CSVParser.getShops(shopType, context);
         List<Shop> shopCacheBuilder = new ArrayList<>();
+
+        List<Shop> shops = CSVParser.getShops(shopType, context);
+
 
         if(deliveryOnly) {
            // Log.d("slp", "deliveryOnlyLoop");

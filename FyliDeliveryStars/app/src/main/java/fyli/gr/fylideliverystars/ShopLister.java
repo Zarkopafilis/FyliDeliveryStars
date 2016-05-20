@@ -34,17 +34,17 @@ public class ShopLister extends Activity implements AdapterView.OnItemClickListe
         }
         //Log.d("slp" , "initializing shop list provider, delivery:"  + delivery);
         //Log.d("slp", "shopType:" + shopType);
-        slp = new ShopListProvider(shopType,delivery);
-        List<String> names = slp.generateShopList(getApplicationContext());
 
-        ListView shopListView = (ListView) findViewById(R.id.shopListerListView);
+        List<String> names;
+            slp = new ShopListProvider(shopType, delivery);
+            names = slp.generateShopList(getApplicationContext());
+            ListView shopListView = (ListView) findViewById(R.id.shopListerListView);
 
-        ArrayAdapter<String> shopTypeListAdapter = new ArrayAdapter<>(getApplicationContext(),R.layout.list_item_simple_black_tv, names);
-        shopListView.setAdapter(shopTypeListAdapter);
-        shopTypeListAdapter.notifyDataSetChanged();
+            ArrayAdapter<String> shopTypeListAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_item_simple_black_tv, names);
+            shopListView.setAdapter(shopTypeListAdapter);
+            shopTypeListAdapter.notifyDataSetChanged();
 
-        shopListView.setOnItemClickListener(this);
-
+            shopListView.setOnItemClickListener(this);
     }
 
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {

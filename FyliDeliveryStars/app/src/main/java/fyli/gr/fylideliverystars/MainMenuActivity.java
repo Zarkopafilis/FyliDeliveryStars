@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class MainMenuActivity extends Activity{
 
-    private Button souvlakiButton, pizzaButton, burgerButton,pancakeButton,coffeeButton;
+    private Button souvlakiButton, pizzaButton, allButton,pancakeButton,coffeeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainMenuActivity extends Activity{
 
         souvlakiButton = (Button) findViewById(R.id.souvlakiButton);
         pizzaButton = (Button) findViewById(R.id.pizzaButton);
-        burgerButton = (Button) findViewById(R.id.burgerButton);
+        allButton = (Button) findViewById(R.id.allButton);
         pancakeButton = (Button) findViewById(R.id.pancakeButton);
         coffeeButton = (Button) findViewById(R.id.coffeeButton);
 
@@ -49,13 +49,13 @@ public class MainMenuActivity extends Activity{
             }
         });
 
-        burgerButton.setOnClickListener(new View.OnClickListener() {
+        allButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                launchShopLister("burger");
+                launchShopLister("all");
             }
-        });
+        });//this button is in the center
 
         pancakeButton.setOnClickListener(new View.OnClickListener() {
 
