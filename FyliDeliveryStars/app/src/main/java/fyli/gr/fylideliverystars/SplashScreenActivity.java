@@ -62,11 +62,11 @@ public class SplashScreenActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //Jump to MainMenuActivity after 2500ms
+                //Jump to MainMenuActivity after 1250ms
                 Intent mainMenuIntent = new Intent(self, MainMenuActivity.class);
                 self.startActivity(mainMenuIntent);
             }
-        }, 2500);
+        }, 1250);
     }
 
 }
