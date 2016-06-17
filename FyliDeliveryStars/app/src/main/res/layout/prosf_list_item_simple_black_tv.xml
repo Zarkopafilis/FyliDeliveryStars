@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:gravity="center"
     android:layout_height="wrap_content"
-    android:textSize="30dp"
+    android:textSize="20dp"
     android:singleLine="false"
     android:scrollHorizontally="false"
-    android:maxWidth="30dp"
+    android:maxWidth="20dp"
     />

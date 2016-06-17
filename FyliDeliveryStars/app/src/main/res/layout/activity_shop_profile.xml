@@ -7,8 +7,8 @@
     tools:context="fyli.gr.fylideliverystars.ShopProfile">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/scrollView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
@@ -116,8 +116,8 @@
                     android:layout_height="fill_parent">
 
                     <fyli.gr.fylideliverystars.util.NonScrollListView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:id="@+id/specialOffersList"
                         android:layout_below="@+id/textView2"
                         android:layout_toStartOf="@+id/workHoursTextView"
@@ -147,7 +147,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Μπλα Μπλα"
-                    android:id="@+id/critiqueTextView" />
+                    android:id="@+id/critiqueTextView"
+                    android:gravity="center_horizontal" />
             </TableRow>
 
         </TableLayout>

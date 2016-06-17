@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -35,9 +36,13 @@ public class ShopProfile extends Activity {
 
         getActionBar().setTitle(shop.getName());
 
-        ListView specialOffersListView = (ListView) findViewById(R.id.specialOffersList);
 
-        ArrayAdapter<String> specialOffersListViewAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.list_item_simple_black_tv, shop.getSpecialOffers().split("~"));
+        String[] specialOffers = shop.getSpecialOffers().split("~");
+        for(String s : specialOffers){
+            Log.d("fds" , s);
+        }
+        ListView specialOffersListView = (ListView) findViewById(R.id.specialOffersList);
+        ArrayAdapter<String> specialOffersListViewAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.prosf_list_item_simple_black_tv, specialOffers);
         specialOffersListView.setAdapter(specialOffersListViewAdapter);
         specialOffersListView.setClickable(false);
         specialOffersListViewAdapter.notifyDataSetChanged();
