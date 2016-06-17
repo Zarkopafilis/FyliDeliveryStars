@@ -8,20 +8,20 @@
         android:label="Fyli Delivery"
         android:theme="@style/AppTheme" >
         <activity
-            android:theme="@style/AppTheme"
+            android:theme="@style/SplashTheme"
             android:name=".SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name">
+        </activity>
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".MainMenuActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:theme="@style/AppTheme"
-            android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu" >
         </activity>
         <activity
             android:theme="@style/AppTheme"
